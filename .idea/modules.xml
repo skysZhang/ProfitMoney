@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/parent/common/common.iml" filepath="$PROJECT_DIR$/parent/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dataservice/dataservice.iml" filepath="$PROJECT_DIR$/dataservice/dataservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent/interface/interface.iml" filepath="$PROJECT_DIR$/parent/interface/interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/money.iml" filepath="$PROJECT_DIR$/money.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent/parent.iml" filepath="$PROJECT_DIR$/parent/parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
+    </modules>
+  </component>
+</project>
