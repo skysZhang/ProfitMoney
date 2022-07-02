@@ -216,4 +216,9 @@
         from b_loan_info
     </select>
 
+    <!--首页：根据产品类型和数量，查询产品信息-->
+    <select id="selectLoanInfoByTypeAndNum" resultMap="BaseResultMap">
+        select * from b_loan_info where product_type = #{ptype} limit #{start}, #{content}
+    </select>
+
 </mapper>
