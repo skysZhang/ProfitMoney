@@ -220,5 +220,10 @@
     <select id="selectLoanInfoByTypeAndNum" resultMap="BaseResultMap">
         select * from b_loan_info where product_type = #{ptype} limit #{start}, #{content}
     </select>
+    
+    <!--列表：查询总记录数-->
+    <select id="selectLoanInfoCountByType" resultType="long">
+        select count(100) from b_loan_info where product_type=#{ptype}
+    </select>
 
 </mapper>

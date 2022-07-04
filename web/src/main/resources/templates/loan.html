@@ -1,5 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -51,7 +49,7 @@
                             </div>
                         </div>
                         <div class="pro-btn">
-                            <a th:href="@{/loan/loanInfo}" class="btn-1">立即投资</a><!--已满标按钮-->
+                            <a th:href="@{/loan/loanInfo(loanId=${loanInfo.id})}" class="btn-1">立即投资</a><!--已满标按钮-->
                         </div>
                     </div>
                 </div>
@@ -63,11 +61,25 @@
                 <tbody>
                 <tr>
                     <td>
-                        共20条3页　当前为第2页　
-                        <a id="linkHomePage" th:href="@{/loan/loan}">首页</a>
-                        <a id="linkPreviousPage" th:href="@{/loan/loan}">上一页</a>
-                        <a id="linkNextPage" th:href="@{/loan/loan}">下一页 </a>
-                        <a id="linkLastPage" th:href="@{/loan/loan}">尾页</a>
+                        <span th:text="|共${#session.getAttribute('pageModel').totalCount}条${#session.getAttribute('pageModel').totalPage}页 当前为第${#session.getAttribute('pageModel').curPage}页|"></span>
+                        <a id="linkHomePage"
+                           th:href="@{/loan/loan(ptype=${ptype}, curpage=${#session.getAttribute('pageModel').firstPage})}">首页</a>
+                        <span th:if="${#session.getAttribute('pageModel').curPage<=#session.getAttribute('pageModel').firstPage}">
+						<a id="linkPreviousPage" href="#">上一页</a>
+				        </span>
+                        <span th:if="${#session.getAttribute('pageModel').curPage>#session.getAttribute('pageModel').firstPage}">
+					    <a id="linkPreviousPage"
+                           th:href="@{/loan/loan(ptype=${ptype},curPage=${#session.getAttribute('pageModel').curPage-1})}">上一页</a>
+				        </span>
+
+                        <span th:if="${#session.getAttribute('pageModel').curPage<#session.getAttribute('pageModel').totalPage}">
+						<a id="linkNextPage"
+                           th:href="@{/loan/loan(ptype=${ptype},curPage=${#session.getAttribute('pageModel').curPage+1})}">下一页</a>
+				        </span>
+                        <span th:if="${#session.getAttribute('pageModel').curPage>=#session.getAttribute('pageModel').totalPage}">
+						<a id="linkNextPage" href="#">下一页 </a></span>
+
+                        <a id="linkLastPage" th:href="@{/loan/loan(ptype=${ptype},curPage=${#session.getAttribute('pageModel').totalPage})}">尾页</a>
                     </td>
                 </tr>
                 </tbody>

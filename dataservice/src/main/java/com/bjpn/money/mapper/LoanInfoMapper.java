@@ -25,4 +25,7 @@ public interface LoanInfoMapper {
 
     //首页：根据产品类型和数量，查询产品信息
     List<LoanInfo> selectLoanInfoByTypeAndNum(Map<String, Object> parasMap);
+
+    //列表：查询总记录数
+    Long selectLoanInfoCountByType(Integer ptype);
 }
