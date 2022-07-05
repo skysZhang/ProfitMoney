@@ -10,4 +10,5 @@ public interface UserService {
      */
     Long queryUserCount();
 
+    int checkPhone(String phone);
 }

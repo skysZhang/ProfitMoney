@@ -19,4 +19,10 @@ public class UserServiceImpl implements UserService {
     public Long queryUserCount() {
         return userMapper.selectUserCount();
     }
+
+    //注册：验证手机号码
+    @Override
+    public int checkPhone(String phone) {
+        return userMapper.selectUserCountByPhone(phone);
+    }
 }

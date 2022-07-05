@@ -9,6 +9,20 @@
         <result column="bid_time" jdbcType="TIMESTAMP" property="bidTime"/>
         <result column="bid_status" jdbcType="INTEGER" property="bidStatus"/>
     </resultMap>
+
+    <resultMap id="BaseResultMap2" type="com.bjpn.money.model.BidInfo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="loan_id" jdbcType="INTEGER" property="loanId"/>
+        <result column="uid" jdbcType="INTEGER" property="uid"/>
+        <result column="bid_money" jdbcType="DOUBLE" property="bidMoney"/>
+        <result column="bid_time" jdbcType="TIMESTAMP" property="bidTime"/>
+        <result column="bid_status" jdbcType="INTEGER" property="bidStatus"/>
+        <association property="user" javaType="com.bjpn.money.model.User" autoMapping="true">
+            <id property="id" column="user_id"></id>
+            <result property="phone" column="phone"></result>
+        </association>
+    </resultMap>
+
     <sql id="Base_Column_List">
         id, loan_id, uid, bid_money, bid_time, bid_status
     </sql>
@@ -107,5 +121,14 @@
     <select id="selectBidMoneySum" resultType="double">
         select sum(bid_money)
         from b_bid_info
+    </select>
+
+    <!--详情：根据产品编号，查询产品投资记录-->
+    <select id="selectBidInfoById" resultMap="BaseResultMap2">
+        select *, u_user.id userId
+        from b_bid_info,
+             u_user
+        where loan_id = #{loanId}
+          and u_user.id = b_bid_info.uid
     </select>
 </mapper>

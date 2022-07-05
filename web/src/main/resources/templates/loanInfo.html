@@ -91,24 +91,17 @@
                             <!-- 如果投资记录为空，显示以下文字 -->
                             <dd style="text-align:center;">该产品暂时还没有人投资，赶快去投资吧~</dd>
 
+                            <!--课后：完成分页-->
                             <!-- 如果有投资记录，循环遍历显示 -->
-                            <dd>
-                                <span class="record-num">1</span>
-                                <span class="invest-user">137******89</span>
-                                <span class="invest-money">1000.0</span>
-                                <span class="invest-time">2017-09-12 13:34:22</span>
-                            </dd>
-                            <dd>
-                                <span class="record-num">2</span>
-                                <span class="invest-user">130******12</span>
-                                <span class="invest-money">1000.0</span>
-                                <span class="invest-time">2017-07-12 17:34:22</span>
-                            </dd>
-                            <dd>
-                                <span class="record-num">3</span>
-                                <span class="invest-user">137******33</span>
-                                <span class="invest-money">1000.0</span>
-                                <span class="invest-time">2017-06-12 10:34:22</span>
+                            <dd th:each="bidInfo:${bidInfoList}">
+                                <span class="record-num" th:text="${bidInfoStat.count}">1</span>
+                                <!--脱敏操作：脱去敏感信息-->
+                                <!--课后：在前端维护一个数组，里面装了100个手机号码，随机抽取一个放在这里-->
+                                <span class="invest-user"
+                                      th:text="${#strings.substring(bidInfo.user.phone,0,3)+'*****'+#strings.substring(bidInfo.user.phone,8)}">137******89</span>
+                                <span class="invest-money" th:text="${bidInfo.bidMoney}">1000.0</span>
+                                <span class="invest-time"
+                                      th:text="${#dates.format(bidInfo.bidTime,'yyyy-MM-dd HH:mm:ss')}">2017-09-12 13:34:22</span>
                             </dd>
                         </dl>
                     </div>

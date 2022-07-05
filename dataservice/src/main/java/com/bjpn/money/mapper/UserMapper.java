@@ -18,4 +18,6 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     Long selectUserCount();
+
+    int selectUserCountByPhone(String phone);
 }
