@@ -8,4 +8,5 @@ public class Constants {
 
     public static final String BID_MONEY_SUM = "bidMoneySum";
 
+    public static final String LOGIN_USER = "loginUser";
 }
